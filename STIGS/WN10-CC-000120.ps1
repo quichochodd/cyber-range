@@ -32,6 +32,11 @@ function Check-Admin {
     return $principal.IsInRole([Security.Principal.WindowsBuiltInRole]::Administrator)
 }
 
+# Relaunch as Administrator if not already running with elevated privileges
+if (-not (Check-Admin)) {
+    Write-Host "Run script with Administrator privileges..." -ForegroundColor Yellow
+}
+
 # Registry path
 $RegPath = "HKLM:\SOFTWARE\Policies\Microsoft\Windows\System"
 $RegName = "DontDisplayNetworkSelectionUI"

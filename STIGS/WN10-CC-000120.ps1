@@ -35,6 +35,7 @@ function Check-Admin {
 # Relaunch as Administrator if not already running with elevated privileges
 if (-not (Check-Admin)) {
     Write-Host "Run script with Administrator privileges..." -ForegroundColor Yellow
+    exit
 }
 
 # Registry path
